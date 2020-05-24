@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>board-app</title>
+   <link rel="stylesheet" href="main.css">
+
+</head>
+
+<body>
+   <div id="board">
+      <h2 class="title">掲示板</h2>
+      <!-- 投稿一覧-->
+      <ul class="lists" style="list-style-type: none;">
+         <board-list v-for="(list, index) in lists"
+            v-bind:name="list.name"
+            v-bind:message="list.message"
+            v-bind:date="list.date">
+         </board-list>
+      </ul>
+      <!-- 入力フォーム-->
+      <board-form @input="doAdd"></board-form>
+      <!-- 削除ボタン-->
+      <div  class="remove">
+         <button @click="remove(index)">削除</button>
+      </div>
+   </div>
+   
+
+   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   <script src="main.js"></script>
+</body>
+</html>
